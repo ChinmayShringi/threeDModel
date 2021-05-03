@@ -1,0 +1,23 @@
+
+html,
+body
+{
+    height: 100vh;
+}
+
+.webgl
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    outline: none;
+    z-index: 0;
+}
+.card
+{
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    outline: none;
+}
