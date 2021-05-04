@@ -42,7 +42,7 @@ if (result.length == 8){return result;}
 
 // Add Data Components
 function addCub(){
-  const geometry = new THREE.BoxGeometry( 0.8,0.1,2.3);
+  const geometry = new THREE.BoxGeometry( 8,1,20);
     var material = new THREE.MeshBasicMaterial();
   planes[ind] = new THREE.Mesh(geometry,material)
   scene.add(planes[ind])
@@ -65,9 +65,10 @@ function addCub(){
 addCuboid.addEventListener('click',addCub)
 
 function addSph(){
-  const geometry = new THREE.SphereGeometry( 1, 3, 2 );
+  const geometry = new THREE.SphereGeometry( 5, 32, 32 );
   const material = new THREE.MeshBasicMaterial();
   spheres[inds] = new THREE.Mesh(geometry,material)
+  spheres[ind].position.x=10
   scene.add(spheres[inds])
   var f=gui.addFolder('Sphere '+(inds+1));
   var f1 = gui.addFolder('SSize'+(inds+1));
@@ -94,7 +95,7 @@ addSphere.addEventListener('click',addSph)
 const scene = new THREE.Scene()
 scene.background = new THREE.Color(0xcfcfcf)
 // Objects
-const geometry = new THREE.BoxGeometry( 3,0.01,2.3);
+const geometry = new THREE.BoxGeometry( 50,0.1,50);
 
 // Materials
 
@@ -104,6 +105,38 @@ material.color = new THREE.Color(0xffffff)
 // Mesh
 const plane = new THREE.Mesh(geometry,material)
 scene.add(plane)
+// 
+
+
+
+
+
+
+const loader = new THREE.ObjectLoader();
+
+loader.load(
+	// resource URL
+	"../assets/car.json",
+	function ( obj ) {
+		scene.add( obj );
+	},
+
+	// onError callback
+	function ( err ) {
+		console.error( 'An error happened' );
+	}
+);
+
+
+
+
+
+
+
+
+
+
+
 
 /**
  * Sizes
@@ -135,7 +168,7 @@ window.addEventListener('resize', () =>
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
 camera.position.x = 0
 camera.position.y = 0
-camera.position.z = 2
+camera.position.z = 80
 scene.add(camera)
 
 // Controls
