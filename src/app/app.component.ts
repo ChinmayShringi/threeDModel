@@ -143,7 +143,7 @@ function addTemp(house){
     f3.add(prop.rotation,'y').min(0).max(10)
     f3.add(prop.rotation,'z').min(0).max(10)
     // gui.addColor( prop.material, 'color') 
-    temp[indt=prop]  
+    temp[indt] =prop
     indt=indt+1
 
 	},
