@@ -129,16 +129,16 @@ function addTemp(house){
     prop.scale.x=0.03
     prop.scale.y=0.03
     prop.scale.z=0.05
-    gui.addFolder('Template '+(inds+1));
-    var f1 = gui.addFolder('TSize'+(inds+1));
+    gui.addFolder('Template '+(indt+1));
+    var f1 = gui.addFolder('TSize'+(indt+1));
     f1.add(prop.scale,'x').min(0).max(10)
     f1.add(prop.scale,'y').min(0).max(10)
     f1.add(prop.scale,'z').min(0).max(10)
-    var f2=gui.addFolder('TPosition'+(inds+1));
+    var f2=gui.addFolder('TPosition'+(indt+1));
     f2.add(prop.position,'x').min(0).max(10)
     f2.add(prop.position,'y').min(0).max(10)
     f2.add(prop.position,'z').min(0).max(10)
-    var f3 = gui.addFolder('TRotation'+(inds+1));
+    var f3 = gui.addFolder('TRotation'+(indt+1));
     f3.add(prop.rotation,'x').min(0).max(10)
     f3.add(prop.rotation,'y').min(0).max(10)
     f3.add(prop.rotation,'z').min(0).max(10)
