@@ -9,3 +9,12 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+
+## Add 3D objects dynamically
+We can create 3D modeling open source platform for the web and people can integrate the same in their projects.
+![Alt text](ss/ss1.png "2 Cubiods")
+
+
+## Add 3D objects dynamically
+This platform currently allows users to add cuboids, sphere and templates with a click of a button and users can use the GUI to change color,position, height , width, depth,rotation.
+![Alt text](ss/ss2.png "3 Cubiods")
