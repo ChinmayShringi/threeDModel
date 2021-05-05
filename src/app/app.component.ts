@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import * as dat from 'dat.gui'
 @Component({
   selector: 'app-root',
@@ -20,6 +21,13 @@ const gui = new dat.GUI()
 const canvas = document.querySelector('canvas.webgl')
 const addSphere = document.querySelector('a.addCircle')
 const addCuboid = document.querySelector('a.addCube')
+const addTemp1 = document.querySelector('a.addTemp1')
+const addTemp2 = document.querySelector('a.addTemp2')
+const addTemp3 = document.querySelector('a.addTemp3')
+const addTemp4 = document.querySelector('a.addTemp4')
+const addTemp5 = document.querySelector('a.addTemp5')
+const addTemp6 = document.querySelector('a.addTemp6')
+const addTemp7 = document.querySelector('a.addTemp7')
 let ind=0
 let planes=[]
 let inds=0
@@ -107,18 +115,37 @@ const plane = new THREE.Mesh(geometry,material)
 scene.add(plane)
 // 
 
+var temp=[]
+var indt=0
+const loader = new GLTFLoader();
 
+function addTemp(house){
+  loader.load(
+	"../assets/"+house+"/scene.gltf",
+	function ( gtlf ) {
+		scene.add( gtlf.scene );
+    console.log(gtlf);
+    var prop=gtlf.scene
+    prop.scale.x=0.03
+    prop.scale.y=0.03
+    prop.scale.z=0.05
+    gui.addFolder('Template '+(inds+1));
+    var f1 = gui.addFolder('TSize'+(inds+1));
+    f1.add(prop.scale,'x').min(0).max(10)
+    f1.add(prop.scale,'y').min(0).max(10)
+    f1.add(prop.scale,'z').min(0).max(10)
+    var f2=gui.addFolder('TPosition'+(inds+1));
+    f2.add(prop.position,'x').min(0).max(10)
+    f2.add(prop.position,'y').min(0).max(10)
+    f2.add(prop.position,'z').min(0).max(10)
+    var f3 = gui.addFolder('TRotation'+(inds+1));
+    f3.add(prop.rotation,'x').min(0).max(10)
+    f3.add(prop.rotation,'y').min(0).max(10)
+    f3.add(prop.rotation,'z').min(0).max(10)
+    // gui.addColor( prop.material, 'color') 
+    temp[indt=prop]  
+    indt=indt+1
 
-
-
-
-const loader = new THREE.ObjectLoader();
-
-loader.load(
-	// resource URL
-	"../assets/car.json",
-	function ( obj ) {
-		scene.add( obj );
 	},
 
 	// onError callback
@@ -126,11 +153,29 @@ loader.load(
 		console.error( 'An error happened' );
 	}
 );
+  
+}
+
+addTemp1.addEventListener('click',function(){addTemp('House1')})
+addTemp2.addEventListener('click',function(){addTemp('House2')})
+addTemp3.addEventListener('click',function(){addTemp('House3')})
+addTemp4.addEventListener('click',function(){addTemp('House4')})
+addTemp5.addEventListener('click',function(){addTemp('House5')})
+addTemp6.addEventListener('click',function(){addTemp('House6')})
+addTemp7.addEventListener('click',function(){addTemp('House7')})
 
 
+// Ambient Light
 
+const ambient= new THREE.AmbientLight(0xaeaeae,2);
+scene.add(ambient);
 
-
+// Point Light
+// const pointLight=new THREE.PointLight(0xff0000,2)
+// pointLight.position.x=1
+// pointLight.position.y=1
+// pointLight.position.z=0.5
+// scene.add(pointLight)
 
 
 
